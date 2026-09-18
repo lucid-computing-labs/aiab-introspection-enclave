@@ -1,14 +1,14 @@
 # AIAB enclave release configuration
 
-This directory contains only measured deployment settings, a policy manifest, and a pinned measurement workflow. No live enclave or approved Tinfoil release digest exists yet.
+This directory contains only measured deployment settings, a policy manifest, and a pinned measurement workflow. The measured v0.1.0 release exists; live enclave acceptance is still pending.
 
 Application image: `ghcr.io/lucid-computing-labs/aiab-introspection-enclave@sha256:e42c2af9be20bd0aac1550f216b104b88f7f73121797558818c177b786e7f0db`
 
 Offline policy digest: `8d03b314f111446aba77f1b944fda015919b0e0e222b0026b9057fee47cc1092`
 
-Tinfoil release digest: **not yet measured or independently approved**.
+Measured Tinfoil release digest: `a09b7352d4346f0eb9faf06426f481018c4b37c89fc3d491209c99905a350d7a`. Live deployment acceptance is still pending.
 
-The application image contains executable AIAB source and classifier definitions. Making the image public discloses those files, even when the source GitHub repository remains private. Review that disclosure before publication.
+The runtime image is **PRIVATE** and contains executable AIAB source and classifier definitions. The source GitHub repository also remains **PRIVATE**. Only this small measured configuration repository is public. Tinfoil must pull the private image using its configured registry credential; image visibility and shared credentials must not be changed to work around access failures.
 
 Repository secrets: TINFOIL_API_KEY, ANTHROPIC_API_KEY, AIAB_GATEWAY_TOKEN. Secret values never belong in this repository. Standard Tinfoil deployment secrets are accessible to Tinfoil infrastructure.
 
@@ -20,4 +20,4 @@ Two independent clean local builds from the committed source, with GitHub checko
 
 Image config digest: `sha256:e22afb3f006bbb4940ece646e67561f2d20a91fe7dda2eae37c4b7980d93085b`. Both OCI exports were inspected across all layers and contain no Python bytecode or application cache directories.
 
-This public config contains no provider credentials or private repository history. The public image contains the runtime application and classifier definitions. Browser TLS terminates at the host, and governed inference is sent to Anthropic over HTTPS; neither is claimed to execute confidentially.
+This public config contains no provider credentials or private repository history. The private runtime image contains the application and classifier definitions; those files are not published by this configuration repository. Browser TLS terminates at the host, and governed inference is sent to Anthropic over HTTPS; neither is claimed to execute confidentially.
