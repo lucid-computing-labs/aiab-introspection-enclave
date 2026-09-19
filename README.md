@@ -1,12 +1,18 @@
 # AIAB enclave release configuration
 
-This directory contains only measured deployment settings, a policy manifest, and a pinned measurement workflow. The measured v0.1.1 release updates the CVM version to 0.14.9; live enclave acceptance is still pending.
+This directory contains only measured deployment settings, a policy manifest, and a pinned measurement workflow. The measured v0.1.1 release uses CVM 0.14.9 and passed live enclave acceptance on 2026-09-19.
 
 Application image: `ghcr.io/lucid-computing-labs/aiab-introspection-enclave@sha256:e42c2af9be20bd0aac1550f216b104b88f7f73121797558818c177b786e7f0db`
 
 Offline policy digest: `8d03b314f111446aba77f1b944fda015919b0e0e222b0026b9057fee47cc1092`
 
 Measured Tinfoil release digest (v0.1.1): `34b158a1d180c004daa1e0fde014848726be04c0b4506da6b6ed861ee264496c`.
+
+Live enclave: `aiab-introspection.lucid-computing.containers.tinfoil.dev`.
+Independent verification matched the release and policy digests above; the verified
+gateway then passed allowed, blocked, signed-report, wrong-pin, direct-token
+rejection, and public-route checks. The exact accepted container is scheduled to
+stop on 2026-09-26 at 04:12:28 UTC.
 
 The runtime image is **PRIVATE** and contains executable AIAB source and classifier definitions. The source GitHub repository also remains **PRIVATE**. Only this small measured configuration repository is public. Tinfoil must pull the private image using its configured registry credential; image visibility and shared credentials must not be changed to work around access failures.
 
